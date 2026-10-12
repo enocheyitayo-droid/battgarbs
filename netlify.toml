@@ -1,0 +1,20 @@
+[build]
+command = "npm run build:share"
+publish = ".next"
+
+[build.environment]
+NODE_VERSION = "24"
+NEXT_TELEMETRY_DISABLED = "1"
+
+[[headers]]
+for = "/*"
+[headers.values]
+X-Content-Type-Options = "nosniff"
+X-Robots-Tag = "noindex, nofollow"
+Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Netlify auto-installs the current Next.js adapter. No SPA catch-all rewrite.
+
+[[edge_functions]]
+path = "/api/region"
+function = "region"

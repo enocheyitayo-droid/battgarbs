@@ -1,0 +1,8 @@
+import {useEffect,useRef} from 'react';
+import {X,ArrowUpRight} from 'lucide-react';
+export default function SideMenu({lang,close,navigate}:{lang:'en'|'de';close:()=>void;navigate:(page:string)=>void}){
+ const ref=useRef<HTMLDialogElement>(null);const t=(en:string,de:string)=>lang==='en'?en:de;
+ useEffect(()=>{ref.current?.showModal();const previous=document.body.style.overflow;document.body.style.overflow='hidden';return()=>{ref.current?.close();document.body.style.overflow=previous;};},[]);
+ const links=[['appointment',t('Book an appointment','Termin buchen')],['collections',t('Our designs','Unsere Designs')],['inspiration',t('Inspiration','Inspiration')],['transform',t('Beyond the wedding','Nach der Hochzeit')],['workspace',t('Private atelier','Privates Atelier')],['atelier',t('Atelier demo','Atelier-Demo')],['about',t('About us','Über uns')],['contact',t('Contact','Kontakt')]];
+ return <dialog ref={ref} className="navigation-drawer" aria-label={t('More navigation','Weitere Navigation')} onCancel={close} onClick={e=>{if(e.target===e.currentTarget&&e.clientX<e.currentTarget.getBoundingClientRect().left)close();}}><div className="drawer-heading"><span>BATT GARBS</span><button autoFocus onClick={close} aria-label={t('Close menu','Menü schließen')}><X/></button></div><p className="drawer-kicker">BERLIN · BRIDAL & OCCASIONWEAR</p><nav aria-label={t('More pages','Weitere Seiten')}>{links.map(([id,label])=><button key={id} onClick={()=>{close();navigate(id);}}>{label}<ArrowUpRight size={20}/></button>)}</nav><p className="drawer-note">{t('Your dress. Your story.','Dein Kleid. Deine Geschichte.')}</p></dialog>;
+}

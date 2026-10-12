@@ -1,0 +1,39 @@
+{
+  "name": "battgarbs-atelier",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --use-system-ca server.mjs",
+    "build": "next build",
+    "start": "node --use-system-ca server.mjs --production",
+    "test": "node --test tests/*.test.mjs",
+    "test:ui": "playwright test",
+    "typecheck": "tsc --noEmit",
+    "build:share": "node scripts/build-share.mjs",
+    "demo:background": "node --use-system-ca scripts/demo-background-worker.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.117.3",
+    "@tailwindcss/postcss": "^4.3.3",
+    "dotenv": "^17.0.0",
+    "express": "^5.1.0",
+    "lucide-react": "^0.468.0",
+    "next": "^16.4.0",
+    "postcss": "^8.5.29",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4.3.3",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8",
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^26.6.4",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.186.0",
+    "typescript": "^5.8.0"
+  }
+}

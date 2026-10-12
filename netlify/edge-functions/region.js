@@ -1,0 +1,1 @@
+export default (_request,context)=>Response.json({country:context.geo?.country?.code||null,language:context.geo?.country?.code==='DE'?'de':context.geo?.country?.code?'en':null},{headers:{'Cache-Control':'private, no-store'}});
